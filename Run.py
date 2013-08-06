@@ -25,10 +25,7 @@ class Runner(threading.Thread):
       )
 
       self.stdout, self.stderr = proc.communicate()
-
-      self.view.set_read_only(False)
       self.view.run_command('insert_view', { 'string': self.stdout })
-      self.view.set_read_only(True)
 
 class RunCommand(sublime_plugin.WindowCommand):
   def run(self):
