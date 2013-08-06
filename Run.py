@@ -15,13 +15,12 @@ class Runner(threading.Thread):
 
     def run(self):
       proc = subprocess.Popen(
-        self.command,
-        shell=True,
+        [self.shell, '-ic', self.command],
+        shell=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         universal_newlines=True,
         env=self.env,
-        executable=self.shell
       )
 
       self.stdout, self.stderr = proc.communicate()
