@@ -1,20 +1,20 @@
 {
-  "schema_version": "1.2",
-  "packages": [
-    {
-      "name": "Run",
-      "description": "Run your favorites command lines right from Sublime",
-      "author": "Geoffroy Lorieux <TechMantra>",
-      "homepage": "https://github.com/TechMantra/Run",
-      "last_modified": "2013-08-06 12:42:42",
-      "platforms": {
-        "osx": [
-          {
-            "version": "0.0.1",
-            "url": "https://github.com/TechMantra/Run/releases/download/0.0.1/Run.sublime-package"
-          }
-        ]
-      }
-    }
-  ]
+	"schema_version": "2.0",
+	"packages": [
+		{
+			"name": "Run",
+			"details": "https://github.com/TechMantra/Run",
+      "readme": "https://raw.github.com/TechMantra/Run/master/README.md",
+      "issues": "https://github.com/TechMantra/Run/issues",
+      "donate": "https://www.gittip.com/glorieux/",
+      "labels": ["terminal/shell/repl"],
+      "sublime_text": ">2999",
+			"releases": [
+				{
+          "platforms": ["osx", "osx-x64"],
+					"details": "https://github.com/TechMantra/Run/tags"
+				}
+			]
+		}
+	]
 }
