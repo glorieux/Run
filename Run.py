@@ -11,7 +11,7 @@ class Runner(threading.Thread):
       self.shell = shell or ''
       self.env = env or ''
       self.view = view or None
-      threading.Thread.__init__(self)
+      threading.Thread.__init__(self, daemon=True)
 
     def run(self):
       proc = subprocess.Popen(
@@ -20,11 +20,15 @@ class Runner(threading.Thread):
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         universal_newlines=True,
-        env=self.env,
+        env=self.env
       )
 
-      self.stdout, self.stderr = proc.communicate()
-      self.view.run_command('insert_view', { 'string': self.stdout })
+      while True:
+        out = proc.stdout.read(1)
+        if out == '' and proc.poll() != None:
+          break
+        if out != '':
+          self.view.run_command('insert_view', { 'string': out })
 
 class RunCommand(sublime_plugin.WindowCommand):
   def run(self):
