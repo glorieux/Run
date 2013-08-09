@@ -11,7 +11,7 @@ class Runner(threading.Thread):
       self.shell = shell or ''
       self.env = env or ''
       self.view = view or None
-      threading.Thread.__init__(self, daemon=True)
+      threading.Thread.__init__(self)
 
     def run(self):
       proc = subprocess.Popen(
@@ -49,4 +49,3 @@ class InsertViewCommand(sublime_plugin.TextCommand):
       self.view.set_read_only(False)
       self.view.insert(edit, self.view.size(), string)
       self.view.set_read_only(True)
-
